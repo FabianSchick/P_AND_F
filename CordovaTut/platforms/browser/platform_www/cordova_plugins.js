@@ -176,6 +176,14 @@ module.exports = [
         "id": "cordova-plugin-camera.CameraProxy",
         "pluginId": "cordova-plugin-camera",
         "runs": true
+    },
+    {
+        "file": "plugins/cordova-sms-plugin/www/sms.js",
+        "id": "cordova-sms-plugin.Sms",
+        "pluginId": "cordova-sms-plugin",
+        "clobbers": [
+            "window.sms"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -191,7 +199,8 @@ module.exports.metadata =
     "cordova-plugin-network-information": "1.3.1",
     "es6-promise-plugin": "3.0.2",
     "cordova-plugin-geofence": "0.6.0",
-    "cordova-plugin-camera": "2.3.1"
+    "cordova-plugin-camera": "2.3.1",
+    "cordova-sms-plugin": "0.1.11"
 }
 // BOTTOM OF METADATA
 });

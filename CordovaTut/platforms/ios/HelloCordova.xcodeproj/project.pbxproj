@@ -46,6 +46,7 @@
 		4E52DA488C594ECC8B680034 /* CDVCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = 50961AE037394806991AD1DC /* CDVCamera.m */; };
 		FD116E76F38E4FAB9761B829 /* CDVJpegHeaderWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 5218880E508047C4971C40A9 /* CDVJpegHeaderWriter.m */; };
 		933BC36E341E46B198812F55 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 249FECC7D60345D2BB4EAB1F /* ImageIO.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		23126737971840ED9C0D732E /* Sms.m in Sources */ = {isa = PBXBuildFile; fileRef = D9AE32CEE92E4AEE9491EB8A /* Sms.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -130,6 +131,8 @@
 		90C9C81FA591478198D36ACB /* CDVJpegHeaderWriter.h */ = {isa = PBXFileReference; name = "CDVJpegHeaderWriter.h"; path = "cordova-plugin-camera/CDVJpegHeaderWriter.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		0AAC4C0435DE4D75AD797342 /* CDVExif.h */ = {isa = PBXFileReference; name = "CDVExif.h"; path = "cordova-plugin-camera/CDVExif.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 		249FECC7D60345D2BB4EAB1F /* ImageIO.framework */ = {isa = PBXFileReference; name = "ImageIO.framework"; path = "System/Library/Frameworks/ImageIO.framework"; sourceTree = SDKROOT; fileEncoding = undefined; lastKnownFileType = wrapper.framework; explicitFileType = undefined; includeInIndex = 0; };
+		D9AE32CEE92E4AEE9491EB8A /* Sms.m */ = {isa = PBXFileReference; name = "Sms.m"; path = "cordova-sms-plugin/Sms.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		2581FE35273E4E2C96CDC514 /* Sms.h */ = {isa = PBXFileReference; name = "Sms.h"; path = "cordova-sms-plugin/Sms.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -290,6 +293,8 @@
 				E4693482D3E145119EEACB86 /* CDVCamera.h */,
 				90C9C81FA591478198D36ACB /* CDVJpegHeaderWriter.h */,
 				0AAC4C0435DE4D75AD797342 /* CDVExif.h */,
+				D9AE32CEE92E4AEE9491EB8A /* Sms.m */,
+				2581FE35273E4E2C96CDC514 /* Sms.h */,
 			);
 			name = Plugins;
 			path = "HelloCordova/Plugins";
@@ -419,6 +424,7 @@
 				AEB0D569250242B8A73C14A0 /* UIImage+CropScaleOrientation.m in Sources */,
 				4E52DA488C594ECC8B680034 /* CDVCamera.m in Sources */,
 				FD116E76F38E4FAB9761B829 /* CDVJpegHeaderWriter.m in Sources */,
+				23126737971840ED9C0D732E /* Sms.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

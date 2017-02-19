@@ -78,8 +78,14 @@ function onDeviceReady() {
     console.log("test");
     console.log(navigator.contacts);
     console.log(navigator.camera);
-    getBatteryStatus();
     initializeGeofenzing();
+
+    window.geofence.onTransitionReceived = function (geofences) {
+        geofences.forEach(function (geo) {
+            console.log('Geofence transition detected + angekommen!', geo);
+            sendSMS();
+        });
+    };
 }
 
 function getBatteryStatus(){
@@ -216,14 +222,14 @@ function initializeGeofenzing() {
 function addGeofence(lat, lng) {
     window.geofence.addOrUpdate({
         id:             "69ca1b88-6fbe-4e80-a4d4-ff4d3748acdb",
-        latitude:       lat,
-        longitude:      lng,
-        radius:         3000,
-        transitionType: TransitionType.ENTER,
+        latitude:       49.38823,
+        longitude:      8.59752,
+        radius:         500,
+        transitionType: TransitionType.BOTH,
         notification: {
             id:             1,
-            title:          "Welcome in Gliwice",
-            text:           "You just arrived to Gliwice city center.",
+            title:          "Angekommen",
+            text:           "Kevin",
             openAppOnClick: true
         }
     }).then(function () {
@@ -232,5 +238,63 @@ function addGeofence(lat, lng) {
     }, function (reason) {
         console.log('Adding geofence failed', reason);
     })
+}
+
+function camera() {
+    function cameraSuccess() {
+        console.log("Camera cleanup success.")
+    }
+
+    function cameraError(message) {
+        alert('Failed because: ' + message);
+    }
+    var srcType = Camera.PictureSourceType.CAMERA;
+    var cameraOptions = setOptions(srcType);
+
+    function setOptions(srcType) {
+        var options = {
+            // Some common settings are 20, 50, and 100
+            quality: 50,
+            destinationType: Camera.DestinationType.FILE_URI,
+            // In this app, dynamically set the picture source, Camera or photo gallery
+            sourceType: srcType,
+            encodingType: Camera.EncodingType.JPEG,
+            mediaType: Camera.MediaType.PICTURE,
+            allowEdit: true,
+            correctOrientation: true  //Corrects Android orientation quirks
+        }
+        return options;
+    }
+
+    navigator.camera.getPicture(cameraSuccess, cameraError, cameraOptions);
+}
+function removeAllGeofences() {
+    window.geofence.removeAll()
+        .then(function () {
+                console.log('All geofences successfully removed.');
+            }
+            , function (reason) {
+                console.log('Removing geofences failed', reason);
+            });
+}
+
+
+function sendSMS() {
+    var number = '01773472472';
+    var message = 'hahahaha';
+    console.log("number=" + number + ", message= " + message);
+
+    //CONFIGURATION
+    var options = {
+        replaceLineBreaks: false, // true to replace \n by a new line, false by default
+        android: {
+            intent: 'intent'
+
+        }
+    };
+    var success = function () {};
+    var error = function (e) { alert('Message Failed:' + e); };
+    sms.send(number, message, options, success, error);
+
 }
 

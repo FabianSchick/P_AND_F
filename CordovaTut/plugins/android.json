@@ -33,6 +33,9 @@
         },
         "cordova-plugin-camera": {
             "PACKAGE_NAME": "io.cordova.hellocordova"
+        },
+        "cordova-sms-plugin": {
+            "PACKAGE_NAME": "io.cordova.hellocordova"
         }
     },
     "dependent_plugins": {

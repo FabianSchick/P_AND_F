@@ -78,8 +78,14 @@ function onDeviceReady() {
     console.log("test");
     console.log(navigator.contacts);
     console.log(navigator.camera);
-    getBatteryStatus();
     initializeGeofenzing();
+
+    window.geofence.onTransitionReceived = function (geofences) {
+        geofences.forEach(function (geo) {
+            console.log('Geofence transition detected + angekommen!', geo);
+            sendSMS();
+        });
+    };
 }
 
 function getBatteryStatus(){
@@ -216,14 +222,14 @@ function initializeGeofenzing() {
 function addGeofence(lat, lng) {
     window.geofence.addOrUpdate({
         id:             "69ca1b88-6fbe-4e80-a4d4-ff4d3748acdb",
-        latitude:       lat,
+        latitude:      lat,
         longitude:      lng,
-        radius:         3000,
-        transitionType: TransitionType.ENTER,
+        radius:         20,
+        transitionType: TransitionType.BOTH,
         notification: {
             id:             1,
-            title:          "Welcome in Gliwice",
-            text:           "You just arrived to Gliwice city center.",
+            title:          "test",
+            text:           "test",
             openAppOnClick: true
         }
     }).then(function () {
@@ -271,3 +277,24 @@ function removeAllGeofences() {
                 console.log('Removing geofences failed', reason);
             });
 }
+
+
+function sendSMS() {
+    var number = '01773472472';
+    var message = 'hahahaha';
+    console.log("number=" + number + ", message= " + message);
+
+    //CONFIGURATION
+    var options = {
+        replaceLineBreaks: false, // true to replace \n by a new line, false by default
+        android: {
+            intent: 'intent'
+
+        }
+    };
+    var success = function () {};
+    var error = function (e) { alert('Message Failed:' + e); };
+    sms.send(number, message, options, success, error);
+
+}
+
